@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:body>
+	<!-- Set the Layout and Title for this page -->
+	<ui:composition template="/layouts/commonLayout.xhtml">
+		<ui:define name="title">Test Response</ui:define>
+		<ui:define name="content">
+			<!-- Login Form -->
+			<div align="center">
+				<h2>Hello #{user.firstName} #{user.lastName}!</h2>
+					<h3>Your Orders are:</h3>
+					<h:dataTable value="#{formController.service.orders}" var="order"
+						styleClass="orderTable"
+						headerClass="orderTableHeader"
+						rowClasses="orderTableOddRow,orderTableEvenRow">
+							<h:column>
+								<f:facet name="header">Order Number</f:facet>
+								#{order.orderNumber}
+							</h:column>
+							<h:column>
+								<f:facet name="header">Product Name</f:facet>
+								#{order.productName}
+							</h:column>
+							<h:column>
+								<f:facet name="header">Price</f:facet>
+								#{order.price}
+							</h:column>
+							<h:column>
+								<f:facet name="header">Quantity</f:facet>
+								#{order.quantity}
+							</h:column>
+					</h:dataTable>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
